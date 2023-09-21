@@ -2,7 +2,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { JwtPayload } from './jwt-payload.interface'; // Define this interface based on your payload structure
+import { JwtPayload } from '../../interfaces/jwt-payload.interface'; // Define this interface based on your payload structure
 import { UserService } from '../../services/user.service';
 import { TokenBlacklistService } from '../../services/token-blacklist.service';
 

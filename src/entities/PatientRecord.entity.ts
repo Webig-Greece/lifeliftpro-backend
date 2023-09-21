@@ -8,10 +8,10 @@ import {
 } from 'typeorm';
 import { User } from './user.entity';
 import { Branch } from './branch.entity';
-import { Appointment } from './Appointment.entity';
-import { Treatment } from './Treatment.entity';
-import { Attachment } from './Attachment.entity';
-import { TherapySession } from './TherapySession.entity';
+import { Appointment } from './appointment.entity';
+import { Treatment } from './treatment.entity';
+import { Attachment } from './attachment.entity';
+import { TherapySession } from './therapySession.entity';
 
 @Entity('patient_records')
 export class PatientRecord {

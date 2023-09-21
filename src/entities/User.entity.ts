@@ -8,17 +8,20 @@ import {
   ManyToOne,
   JoinColumn,
   OneToMany,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { Company } from './company.entity';
-import { Branch } from './Branch.entity';
-import { PatientRecord } from './PatientRecord.entity';
-import { Appointment } from './Appointment.entity';
-import { Treatment } from './Treatment.entity';
-import { Billing } from './Billing.entity';
-import { AuditLog } from './AuditLog.entity';
-import { Notification } from './Notification.entity';
-import { Feedback } from './Feedback.entity';
-import { TherapySession } from './TherapySession.entity';
+import { Branch } from './branch.entity';
+import { PatientRecord } from './patientRecord.entity';
+import { Appointment } from './appointment.entity';
+import { Treatment } from './treatment.entity';
+import { Billing } from './billing.entity';
+import { AuditLog } from './auditLog.entity';
+import { Notification } from './notification.entity';
+import { Feedback } from './feedback.entity';
+import { TherapySession } from './therapySession.entity';
+import { Role } from './Role.entity';
 
 @Entity('users')
 export class User {
@@ -137,4 +140,8 @@ export class User {
 
   @OneToMany(() => TherapySession, (therapySession) => therapySession.therapist)
   therapySessions: TherapySession[];
+
+  @ManyToMany(() => Role)
+  @JoinTable()
+  roles: Role[];
 }

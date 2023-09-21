@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { PatientRecord } from './PatientRecord.entity';
+import { PatientRecord } from './patientRecord.entity';
 
 @Entity()
 export class Attachment {

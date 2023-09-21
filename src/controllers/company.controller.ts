@@ -6,16 +6,24 @@ import {
   Body,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { Company } from '../entities/company.entity';
 import { CompanyService } from '../services/company.service';
+import { CreateCompanyDto } from '../dtos/company/CreateCompanyDto';
+import { UpdateCompanyDto } from '../dtos/company/UpdateCompanyDto';
+import { Roles } from '../shared/roles.decorator';
+import { RolesGuard } from '../guards/roles.guard';
 
 @Controller('companies')
 export class CompanyController {
   constructor(private readonly companyService: CompanyService) {}
 
   @Post()
-  async create(@Body() companyData: Partial<Company>): Promise<Company> {
+  @UseGuards(RolesGuard)
+  @Roles('admin')
+  async create(@Body() companyData: CreateCompanyDto): Promise<Company> {
+    // Replace Partial<Company> with CreateCompanyDto
     return this.companyService.create(companyData);
   }
 
@@ -32,7 +40,7 @@ export class CompanyController {
   @Put(':id')
   async update(
     @Param('id') id: number,
-    @Body() updatedCompanyData: Partial<Company>,
+    @Body() updatedCompanyData: UpdateCompanyDto, // Replace Partial<Company> with UpdateCompanyDto
   ): Promise<Company> {
     return this.companyService.update(id, updatedCompanyData);
   }

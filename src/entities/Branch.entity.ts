@@ -9,7 +9,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { Company } from './company.entity'; // Assuming the Company entity is in the same directory
-import { PatientRecord } from './PatientRecord.entity';
+import { PatientRecord } from './patientRecord.entity';
 
 @Entity('branches')
 export class Branch {

@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
-import { Branch } from './Branch.entity';
+import { Branch } from './branch.entity';
 
 @Entity('companies')
 export class Company {

@@ -6,7 +6,6 @@ import {
   Body,
   Put,
   Delete,
-  BadRequestException,
 } from '@nestjs/common';
 import { UserService } from '../services/user.service';
 import { User } from '../entities/user.entity';
@@ -18,23 +17,7 @@ export class UserController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto): Promise<User> {
-    if (!createUserDto.acceptTerms) {
-      throw new BadRequestException('You must accept the terms to register.');
-    }
-
-    const user: Partial<User> = {
-      firstName: createUserDto.firstName,
-      lastName: createUserDto.lastName,
-      email: createUserDto.email,
-      password: createUserDto.password,
-      vatNumber: createUserDto.vatNumber,
-      profession: createUserDto.profession,
-      isFreelancer: createUserDto.roleIdentity === 'freelancer', // Mapping roleIdentity to isFreelancer
-      language: createUserDto.language,
-      companyName: createUserDto.companyName, // Assuming you've changed the column name to camelCase in the User entity
-      // ... add other fields from CreateUserDto as necessary
-    };
-    return this.userService.create(user);
+    return this.userService.create(createUserDto);
   }
 
   @Get()
